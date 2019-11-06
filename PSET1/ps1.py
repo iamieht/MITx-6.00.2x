@@ -95,8 +95,31 @@ def brute_force_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
+    cowsSet = sorted(get_partitions(cows), key=len)
+    tempTrips = []
+    finalTrips = []
+
+    for listOfCows in cowsSet:
+        trip = []
+        for cow in listOfCows:
+            weights = []
+            for element in cow:
+                weights.append(cows[element])
+            trip.append(sum(weights))
+
+        if all(weight <= limit for weight in trip):
+            tempTrips.append(listOfCows)
+
+    for cow in tempTrips:
+        if cow not in finalTrips:
+            finalTrips.append(cow)
+
+    smallestList = min(map(len, finalTrips))
+
+    for l in finalTrips:
+        if len(l) == smallestList:
+            return l
+
 
         
 # Problem 3
@@ -113,8 +136,16 @@ def compare_cow_transport_algorithms():
     Returns:
     Does not return anything.
     """
-    # TODO: Your code here
-    pass
+    cows = load_cows("ps1_cow_data.txt")
+    limit = 10
+#    start = time.time()
+#    greedy_cow_transport(cows, limit)
+#    end = time.time()
+#    print('Greedy Algorithm took:', (end-start))
+    start = time.time()
+    brute_force_cow_transport(cows, limit)
+    end = time.time()
+    print('Brute Force Algorithm took:', 'Start', start, 'End', end)
 
 
 """
@@ -123,11 +154,12 @@ Do not submit this along with any of your answers. Uncomment the last two
 lines to print the result of your problem.
 """
 
-cows = load_cows("ps1_cow_data.txt")
-limit=100
-print(cows)
+#cows = load_cows("ps1_cow_data.txt")
+#limit=100
+#print(cows)
 
-print(greedy_cow_transport(cows, limit))
-print(brute_force_cow_transport(cows, limit))
+#print(greedy_cow_transport(cows, limit))
+#print(brute_force_cow_transport(cows, limit))
+compare_cow_transport_algorithms()
 
 
