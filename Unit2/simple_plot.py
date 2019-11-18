@@ -15,8 +15,12 @@ for i in range(0, 30):
 
 
 # Plot mySamples (X values) and myLinear (Y values)
+plt.figure('lin')
 plt.plot(mySamples, myLinear)
+plt.figure('quad')
 plt.plot(mySamples, myQuadratic)
+plt.figure('cube')
 plt.plot(mySamples, myCubic)
+plt.figure('expo')
 plt.plot(mySamples, myExponential)
 plt.show()
