@@ -18,6 +18,7 @@ for i in range(0, 30):
 # Linear Plot
 plt.figure('lin')
 plt.clf()                       # Clear any previously open Figure
+plt.ylim(0, 1000)               # Limit of 1000 in Y Axis
 plt.title('Linear') 
 plt.xlabel('sample points')   
 plt.ylabel('linear function')
@@ -26,6 +27,7 @@ plt.plot(mySamples, myLinear)
 # Quadratic Plot
 plt.figure('quad')
 plt.clf()                       # Clear any previously open Figure
+plt.ylim(0, 1000)
 plt.title('Quadratic')
 plt.xlabel('sample points')   
 plt.ylabel('quadratic function')
